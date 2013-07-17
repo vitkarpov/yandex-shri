@@ -1,0 +1,18 @@
+!!!
+html
+  head
+    link(href=css.common, type="text/css", rel="stylesheet")
+      
+    //if lte IE 8
+      link(href=css.ie, type="text/css", rel="stylesheet")
+    //if lte IE 7
+      link(href=css.ie7, type="text/css", rel="stylesheet")
+
+    title= data.title
+  body
+
+    block content
+
+    script(src=jquery)
+    script(src=plugins)
+    script(src=js)
