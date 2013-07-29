@@ -1,0 +1,12 @@
+.form
+	// 22px = 2*10px padding + 2*1px border
+	// there is no border-box,
+	// so we need some hack here to prevent content`s overflow with input
+	&__content
+		padding-right 22px
+	&__input
+		margin-right -22px
+
+	&__checkboxLine
+		input	
+			top 2px

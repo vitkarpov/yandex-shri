@@ -30,7 +30,7 @@ mixin form__question(p)
     - p.validation = {}
   - if (p.validation.required)
     - requiredClass = ' form__required'
-
+  - generateIdTabIndex(p)  
 
   .form__line
     span.form__lineNum(class= requiredClass)= p.num
@@ -45,8 +45,9 @@ mixin form__question(p)
                 +form__checkbox({ label: item })         
       if (p.type == 'textarea')
         textarea.form__input(
-          name= "q-" + p.num, 
-          id= "q-" + p.num, 
+          name= p.name, 
+          id= p.id,
+          tabindex= p.tabindex, 
           rows= "6",
           required= p.validation.required,
           type= p.validation.type,
@@ -55,8 +56,9 @@ mixin form__question(p)
           )
       if (p.type == 'input')
         input.form__input(
-          name= "q-" + p.num, 
-          id= "q-" + p.num, 
+          name= p.name, 
+          id= p.id,
+          tabindex= p.tabindex, 
           required= p.validation.required,
           type= p.validation.type,
           min= p.validation.min,
