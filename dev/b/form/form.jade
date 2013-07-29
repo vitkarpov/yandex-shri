@@ -25,16 +25,17 @@ mixin form(p)
 //- one form line with question
 mixin form__question(p)
   .form__line
-    .form__label
-      span.form__lineNum= p.num
-      +form__switcher
-      +text({ mix: "form__text" })  
-        !{p.text}
-        if (p.checkboxes)
-          p
-            each item in p.checkboxes
-              +form__checkbox({ label: item })
-    textarea(name= "q-" + p.num, id= "q-" + p.num, rows= "6").form__textarea
+    span.form__lineNum= p.num
+    +form__switcher
+    .form__content
+      .form__label
+        +text({ mix: "form__text" })  
+          !{p.text}
+          if (p.checkboxes)
+            p
+              each item in p.checkboxes
+                +form__checkbox({ label: item })
+      textarea(name= "q-" + p.num, id= "q-" + p.num, rows= "6").form__textarea
 
 //- list of checkboxes
 mixin form__checkbox(p)
