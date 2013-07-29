@@ -13,10 +13,24 @@
 	line-height 18px
 
 	&_ok
-		background green
+		background #14a133
+		gradient #14a133, #28bf65
+
+		&:hover
+			gradient #14a133, #41c473
+
+		&:active
+			gradient #41c473, #14a133				
 
 	&_cancel
-		background gray
+		background #616161
+		gradient #616161, #878787
+
+		&:hover
+			gradient #616161, #9c9c9c
+
+		&:active
+			gradient #9c9c9c, #616161	
 
 	.form__fieldset_buttons &
 		margin-left 6px	

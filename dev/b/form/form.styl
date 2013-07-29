@@ -29,6 +29,11 @@ cbSize = 12px
 			color #c5c5c5
 			font-size fontSizeBase - 2
 			margin-right 2px
+			opacity 0.5
+			transition opacity 0.2s ease
+
+			.form__line:hover &
+				opacity 1	
 	
 	&__required
 
@@ -50,6 +55,9 @@ cbSize = 12px
 		padding 5px 10px
 		font-size 14px
 		line-height 18px
+
+		&:focus
+			outline 1px solid #f9f1bb
 	
 	&__text
 		margin-bottom 18px
@@ -91,14 +99,18 @@ cbSize = 12px
 		height @width
 		margin-top -5px
 		margin-right -10px
+		border-radius @width
+
 		cursor pointer
 		text-align center
-		line-height 30px
+		line-height 32px
+
 		opacity 0.5
-		transition opacity 0.2s ease
+		transition all 0.2s ease
 
 		.form__line:hover &
 			opacity 1
+			box-shadow inset 0 0 12px #f9f1bb	
 
 		&:after
 			content '–'
