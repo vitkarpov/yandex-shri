@@ -1,0 +1,36 @@
+// config
+minWidth 	= 1000px
+maxWidth  = 1480px
+layoutGap = 40px
+fontSizeBase = 16px
+fontSizeCaption = 32px
+fontFamily = 'PT Sans Narrow'
+
+// helpers
+box-reset()
+	margin 0
+	padding 0
+	border 0
+	outline 0
+
+box-shadow()
+	-webkit-box-shadow arguments
+	   -moz-box-shadow arguments
+	        box-shadow arguments
+
+box-sizing()
+	-webkit-box-sizing arguments
+	-moz-box-sizing arguments
+	box-sizing arguments
+
+gradient(colorFrom, colorTo)
+	background-image -moz-linear-gradient(bottom,colorFrom 0%,colorTo 100%)
+	background-image -webkit-gradient(linear,left bottom,left top,color-stop(0%,colorFrom),color-stop(100%,colorTo))
+	background-image -webkit-linear-gradient(bottom,colorFrom 0%,colorTo 100%)
+	background-image -o-linear-gradient(bottom,colorFrom 0%,colorTo 100%)
+	background-image -ms-linear-gradient(bottom,colorFrom 0%,colorTo 100%)
+	background-image linear-gradient(bottom top,colorFrom 0%,colorTo 100%)
+
+transition()
+	-webkit-transition arguments
+	transition arguments	  

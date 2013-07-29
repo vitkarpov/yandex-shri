@@ -1,0 +1,4 @@
+mixin text(p)
+	- if (!p.mix) p.mix = ''
+	.text(class= p.mix)
+		block

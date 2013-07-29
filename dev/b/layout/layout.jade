@@ -1,3 +1,12 @@
-mixin layout(p)
-	h1.layout__caption= p.title
-	p.layout__text !{p.description}
+//- header
+mixin layout__header(p)
+	.layout__header
+		.layout__wrapper
+			h1.layout__caption= p.caption
+
+//- footer
+mixin layout__footer(p)
+	.layout__footer
+		.layout__wrapper
+			p.layout__copyrights
+				!{p.about}	

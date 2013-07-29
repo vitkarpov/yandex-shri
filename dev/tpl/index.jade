@@ -3,4 +3,4 @@ extends layout
 include ../b/blocks
 
 block content
-	+layout(data.content)
+	+form({ action: "#", questions: data.form.questions })	

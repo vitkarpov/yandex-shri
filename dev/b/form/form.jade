@@ -1,0 +1,48 @@
+//- question`s form
+mixin form(p)
+  - uniquePrefix = 'f'
+  - uniqueId = 0
+  - tabindex = 0
+  - getUniquePrefix = function() { return uniquePrefix + ++uniqueId; }
+  - getTabIndex = function() { return ++tabindex; }
+  - generateIdTabIndex = function(p) { p.id = getUniquePrefix(); p.tabindex = getTabIndex(); }
+
+  form(action=p.action).form
+    fieldset.form__fieldset
+      each item, i in p.questions
+        +form__question({ text: item.text, num: i + 1, checkboxes: item.checkboxes }) 
+    fieldset.form__fieldset.form__fieldset_buttons
+      +button({ type: "reset", mix: "form__reset", mod: "cancel" })
+        | Отменить
+      +button({ type: "submit", mix: "form__submit", mod: "ok" })
+        | Сохранить
+            
+//- complex form elements
+//- contains some logic parts
+//- so i could simple move it or
+//- change only in one place
+
+//- one form line with question
+mixin form__question(p)
+  .form__line
+    .form__label
+      span.form__lineNum= p.num
+      +form__switcher
+      +text({ mix: "form__text" })  
+        !{p.text}
+        if (p.checkboxes)
+          p
+            each item in p.checkboxes
+              +form__checkbox({ label: item })
+    textarea(name= "q-" + p.num, id= "q-" + p.num, rows= "6").form__textarea
+
+//- list of checkboxes
+mixin form__checkbox(p)
+  - generateIdTabIndex(p)
+  span.form__checkboxLine
+    input(type= "checkbox", tabindex= p.tabindex, id= p.id)
+    label(for= p.id)= p.label
+
+//- line switcher
+mixin form__switcher
+  span.form__switcher
