@@ -20,8 +20,8 @@ cbSize = 12px
 	&__lineNum
 		float left
 		width 20px
-		padding-right 10px
-		margin-left -30px
+		padding-right 15px
+		margin-left -35px
 		text-align right
 
 		&:before
@@ -29,14 +29,27 @@ cbSize = 12px
 			color #c5c5c5
 			font-size fontSizeBase - 2
 			margin-right 2px
+	
+	&__required
 
-	&__textarea
+		&:after
+			color red
+			vertical-align top
+			font-size fontSizeBase - 2
+			width 6px
+			margin-right -6px
+			margin-left 2px
+			content "*"
+
+	&__input
 		box-reset()
 		width 100%
 		resize none
 		box-sizing border-box
 		box-shadow inset 0 1px 2px 0 rgba(0,0,0,0.3)
 		padding 5px 10px
+		font-size 14px
+		line-height 18px
 	
 	&__text
 		margin-bottom 18px
@@ -56,12 +69,19 @@ cbSize = 12px
 	
 	&__content
 		overflow hidden
-		max-height 500px
-		transition max-height 0.3s cubic-bezier(0, 1, 0.5, 1)
+		max-height 700px
+		opacity 1
+
+		.form_js_inited &
+			transition all 0.3s ease-in
 
 		.form__line_closed &
 			max-height 0
-			transition max-height 0.3s ease-in
+			opacity 0
+
+			.form__js_inited &
+				transition all 0.3s ease-out
+			
 
 	&__switcher
 		position absolute

@@ -10,7 +10,7 @@ mixin form(p)
   form(action=p.action).form
     fieldset.form__fieldset
       each item, i in p.questions
-        +form__question({ text: item.text, num: i + 1, checkboxes: item.checkboxes }) 
+        +form__question({ text: item.text, num: i + 1, checkboxes: item.checkboxes, validation: item.validation, type: item.type }) 
     fieldset.form__fieldset.form__fieldset_buttons
       +button({ type: "reset", mix: "form__reset", mod: "cancel" })
         | Отменить
@@ -24,8 +24,16 @@ mixin form(p)
 
 //- one form line with question
 mixin form__question(p)
+  - p = p || {}
+  - requiredClass = ''
+  - if (!p.validation)
+    - p.validation = {}
+  - if (p.validation.required)
+    - requiredClass = ' form__required'
+
+
   .form__line
-    span.form__lineNum= p.num
+    span.form__lineNum(class= requiredClass)= p.num
     +form__switcher
     .form__content
       .form__label
@@ -34,8 +42,26 @@ mixin form__question(p)
           if (p.checkboxes)
             p
               each item in p.checkboxes
-                +form__checkbox({ label: item })
-      textarea(name= "q-" + p.num, id= "q-" + p.num, rows= "6").form__textarea
+                +form__checkbox({ label: item })         
+      if (p.type == 'textarea')
+        textarea.form__input(
+          name= "q-" + p.num, 
+          id= "q-" + p.num, 
+          rows= "6",
+          required= p.validation.required,
+          type= p.validation.type,
+          min= p.validation.min,
+          max= p.validation.max 
+          )
+      if (p.type == 'input')
+        input.form__input(
+          name= "q-" + p.num, 
+          id= "q-" + p.num, 
+          required= p.validation.required,
+          type= p.validation.type,
+          min= p.validation.min,
+          max= p.validation.max 
+        )  
 
 //- list of checkboxes
 mixin form__checkbox(p)
