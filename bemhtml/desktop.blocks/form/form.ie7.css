@@ -1,3 +1,8 @@
+.form__input
+{
+	border: 1px solid lightgray;
+}
+
 .form__content
 {
 	padding-right: 22px;

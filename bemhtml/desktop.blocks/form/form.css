@@ -22,11 +22,12 @@
 {
 	position: relative;
 	margin: 25px 0;
+	min-height: 20px;
 }
 
 .form__lineNum 
 {
-	float: left;
+	position: absolute;
 	width: 20px;
 	padding-right: 10px;
 	margin-left: -30px;
@@ -105,3 +106,21 @@
 	opacity: 1;
 	box-shadow: inset 0 0 12px #f9f1bb;
 }	
+
+.form__progress
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 20px;
+	width: 0;
+	border-bottom: 4px solid #feec74;
+	background-image: -moz-linear-gradient(bottom,#f9f1bb 0%,rgba(249,241,197,0) 100%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0%,#f9f1bb),color-stop(100%,rgba(249,241,197,0)));
+	background-image: -webkit-linear-gradient(bottom,#f9f1bb 0%,rgba(249,241,197,0) 100%);
+	background-image: -o-linear-gradient(bottom,#f9f1bb 0%,rgba(249,241,197,0) 100%);
+	background-image: -ms-linear-gradient(bottom,#f9f1bb 0%,rgba(249,241,197,0) 100%);
+	background-image: linear-gradient(bottom top,#f9f1bb 0%,rgba(249,241,197,0) 100%);
+
+	transition: width 0.5s ease;
+}
