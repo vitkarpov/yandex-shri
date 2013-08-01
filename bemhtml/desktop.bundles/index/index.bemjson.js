@@ -1,11 +1,10 @@
 ({
     block: 'b-page',
-    title: 'Title of the page',
-    favicon: '/favicon.ico',
+    title: 'Анкета-форма для поступающих в ШРИ 2013',
     head: [
         { elem: 'css', url: '_index.css', ie: false },
         { elem: 'css', url: '_index', ie: true },
-        { elem: 'meta', attrs: { name: 'description', content: '' }}
+        { elem: 'css', url: 'http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic' }
     ],
     content:[
         {
@@ -25,6 +24,9 @@
                     content: [
                         {
                             block: 'form',
+                            attrs: {
+                                action: '#'
+                            },
                             questions: [
                                 {
                                     text: [
@@ -33,10 +35,9 @@
                                             content: 'Год рождения'
                                         }
                                     ],
-                                    type: 'input',
+                                    type: 'date',
                                     validation: {
                                         required: true,
-                                        type: "date",
                                         min: "1920-01-01",
                                         max: "1995-09-07"
                                     }
@@ -61,6 +62,19 @@
                                         }
                                     ],
                                     type: 'input'
+                                },
+                                {
+                                    text: [
+                                        {
+                                            elem: 'p',
+                                            content: 'Год окончания вуза'
+                                        }
+                                    ],
+                                    validation: {
+                                        required: false,
+                                        max: "2014"
+                                    },
+                                    type: 'number'
                                 },
                                 {
                                     text: [
@@ -309,6 +323,27 @@
                                         }
                                     ],
                                     type: 'textarea'
+                                }
+                            ],
+                            content: [
+                                {
+                                    elem: 'fieldset',
+                                    mods: { buttons: 'yes' },
+                                    content: [
+                                        {
+                                            block: 'button',
+                                            mods: { type: 'cancel' },
+                                            attrs: { type: 'cancel' },
+                                            content: 'Отмена'
+                                        },
+                                        {
+                                            block: 'button',
+                                            mods: { type: 'ok' },
+                                            attrs: { type: 'ok' },
+                                            type: 'submit',
+                                            content: 'Сохранить'
+                                        }
+                                    ]
                                 }
                             ]
                         }

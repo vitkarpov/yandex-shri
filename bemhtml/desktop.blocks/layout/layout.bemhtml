@@ -8,6 +8,11 @@ block layout, elem footer, content: {
 	content: this.ctx.content
 }
 
+block layout, elem content, content: {
+	elem: 'wrapper',
+	content: this.ctx.content
+}
+
 block layout, elem copyrights {
 	tag: 'p',
 	content: {

@@ -1,6 +1,5 @@
 block form {
-	tag: 'form'
-
+	tag: 'form',
 	content: {
 		var questions = this.ctx.questions,
 				content = [];
@@ -16,9 +15,12 @@ block form {
 				type: item.type,
 				validation: item.validation,
 				text: item.text,
-				num: i + 1
+				num: i + 1,
+				checkboxes: item.checkboxes
 			});
 		}); 
+
+		content.push(this.ctx.content);
 
 		return content;
 	}	
@@ -30,28 +32,59 @@ block form, elem fieldset {
 }
 
 //form line
-block form, elem line, content: {
-	return [
-		{
-			elem: 'lineNum',
-			content: this.ctx.num
-		},
-		{
+block form, elem line {
+	mix: [{ block: 'slide', js: true }]
+	content: {
+		var content = [
+			{
+				elem: 'lineNum',
+				content: this.ctx.num
+			},
+			{
+				elem: 'switcher',
+				mix: [{ block: 'slide', elem: 'switcher' }]
+			},
+			{
+				elem: 'content',
+				mix: [{ block: 'slide', elem: 'content' }],
+				content: []
+			}
+		];
+
+		content[2].content.push({
 			block: 'b-text',
 			mix: [{ block: 'form', elem: 'label' }],
 			content: this.ctx.text
-		},
-		{
+		});
+
+		if (this.ctx.checkboxes) {
+			this.ctx.checkboxes.forEach(function(item) {
+				content[2].content.push({
+					elem: 'checkbox',
+					content: item
+				});
+			});
+		}	
+
+		content[2].content.push({
 			elem: 'input',
 			type: this.ctx.type,
 			validation: this.ctx.validation
-		}
-	]
+		});
+
+		return content;
+	}
 }
 
-//line num
+//line number
 block form, elem lineNum {
 	tag: 'span'
+}
+
+//checkbox line
+block form, elem checkbox, content: {
+	block: 'checkbox',
+	content: this.ctx.content
 }
 
 //form input elements
@@ -77,8 +110,11 @@ block form, elem input {
 			if (props.hasOwnProperty(prop)) result[prop] = props[prop];
 		}
 		
-		if (this.ctx.type !== 'textarea')
+		if (this.ctx.type !== 'textarea') {
 			result.type = ctx.type;
+		} else {
+			result.rows = 6;
+		}
 
 		return result;
 	}
