@@ -1,0 +1,9 @@
+.form__content
+{
+	padding-right: 22px;
+}
+
+.form__input 
+{
+	margin-right: -22px;
+}
