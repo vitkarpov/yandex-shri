@@ -1,0 +1,38 @@
+verticalGap()
+	margin 12px 0
+
+.text
+	
+	&:before,
+	&:after
+		display table
+		width 100%
+		height 0
+		visibility hidden
+		content ""
+
+	p
+		box-reset()
+		verticalGap()
+
+		&:first-child
+			margin-top 0
+
+		&:last-child
+			margin-bottom 0
+
+	blockquote
+		box-reset()
+		verticalGap()
+		padding 5px 5px 5px 25px
+		background #f9f1bb
+		border-top 1px solid #feec74
+		border-bottom @border-top
+
+	ul,
+	ol
+		padding-left 40px
+		verticalGap()
+
+	b
+		font-weight bold	

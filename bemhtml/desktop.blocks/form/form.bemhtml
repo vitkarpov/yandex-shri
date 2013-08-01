@@ -1,0 +1,85 @@
+block form {
+	tag: 'form'
+
+	content: {
+		var questions = this.ctx.questions,
+				content = [];
+
+		content.push({
+			elem: 'fieldset',
+			content: []
+		});
+
+		questions.forEach(function(item, i) {
+			content[0].content.push({
+				elem: 'line',
+				type: item.type,
+				validation: item.validation,
+				text: item.text,
+				num: i + 1
+			});
+		}); 
+
+		return content;
+	}	
+}
+
+//form fieldset
+block form, elem fieldset {
+	tag: 'fieldset'
+}
+
+//form line
+block form, elem line, content: {
+	return [
+		{
+			elem: 'lineNum',
+			content: this.ctx.num
+		},
+		{
+			block: 'b-text',
+			mix: [{ block: 'form', elem: 'label' }],
+			content: this.ctx.text
+		},
+		{
+			elem: 'input',
+			type: this.ctx.type,
+			validation: this.ctx.validation
+		}
+	]
+}
+
+//line num
+block form, elem lineNum {
+	tag: 'span'
+}
+
+//form input elements
+//could be text input or textarea
+//depended on type param
+block form, elem input {
+	tag: {
+		var ctx = this.ctx;
+
+		if (ctx.type == 'textarea') {
+			return 'textarea';
+		} else {
+			return 'input';
+		}
+	}
+
+	attrs: {
+		var result = {},
+				ctx = this.ctx,
+				props = ctx.validation;
+
+		for (prop in props) {
+			if (props.hasOwnProperty(prop)) result[prop] = props[prop];
+		}
+		
+		if (this.ctx.type !== 'textarea')
+			result.type = ctx.type;
+
+		return result;
+	}
+}

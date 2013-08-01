@@ -1,0 +1,60 @@
+headerHeight = 80px
+layoutBg = "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABVAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjFEQzA0MUJFRTlGMzExRTI4NTE2RjYzNUU2RTZCNzNDIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFEQzA0MUJERTlGMzExRTI4NTE2RjYzNUU2RTZCNzNDIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REY1NDczNzNDOEYyMTFFMjg4NEJDMDFCMkQwNTUwNTIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6REY1NDczNzRDOEYyMTFFMjg4NEJDMDFCMkQwNTUwNTIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAmQWRvYmUAZMAAAAABAwAVBAMGCg0AAAT/AAAFKwAABZMAAAYd/9sAhAACAQEBAQECAQECAwIBAgMDAgICAgMDAwMDAwMDBQMEBAQEAwUFBQYGBgUFBwcICAcHCgoKCgoMDAwMDAwMDAwMAQICAgQDBAcFBQcKCAcICgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wgARCAAZABkDAREAAhEBAxEB/8QAlwABAQADAQAAAAAAAAAAAAAAAQACAwQIAQEAAAAAAAAAAAAAAAAAAAAAEAACAQQDAAAAAAAAAAAAAAAAAREQQAISITJDEQABAwMFAAAAAAAAAAAAAAAAEAERICFRYXGR8SISAQAAAAAAAAAAAAAAAAAAAEATAAICAQMEAwEBAAAAAAAAAAERACEx8EFhEEBRsXGRoYHR/9oADAMBAAIRAxEAAAH3URCAkQmJAbANR3n/2gAIAQEAAQUCxUjTJpPMU2dEQamB5Lsf/9oACAECAAEFArD/2gAIAQMAAQUCsP/aAAgBAgIGPwIH/9oACAEDAgY/Agf/2gAIAQEBBj8CNC9k9EEOdGaH3GOE/9oACAEBAwE/IUXhbfsLp+FqfarfEYjQF0yM6xHueeZwafyVapudGNRyDjwZuSBN1kRePsdL6z7E9PR//9oACAECAwE/Iew//9oACAEDAwE/Iew//9oADAMBAAIRAxEAABCSSQASCCD/2gAIAQEDAT8QAjUmCILJSK3e1CElIIxAAhkVv5cZEEAJgSSTckrn5nB+H/ISACCGwQDFU8NVtBFFsKF7gFXlKoogIAwwCySt389MEqFFkAoOgkGBUNnIAsPAUL2LhEgDBAqMANa9Ti1uJhr2gmWh5PT/2gAIAQIDAT8Q7D//2gAIAQMDAT8Q7D//2Q"
+
+body
+	box-reset()
+
+.layout
+	font normal fontSizeBase / 1.3 fontFamily, Arial, serif;
+	min-width minWidth - layoutGap*2
+	padding-top headerHeight
+	background url(layoutBg)
+
+	&__wrapper
+		min-width minWidth - layoutGap*2
+		max-width maxWidth - layoutGap*2
+		padding 0 layoutGap
+		margin 0 auto
+		
+		// новый контекст форматирования
+		&:before,
+		&:after
+			display table
+			width 100%
+			height 0
+			visibility hidden
+			content ""
+
+	&__header
+		position fixed
+		left 0
+		top 0
+		width 100%
+		height headerHeight
+		z-index 0
+
+	&__content
+		position relative
+		z-index 1
+		background url(layoutBg)
+		border-top 1px solid #c5c5c5
+		border-bottom @border-top
+
+		&:before
+			gradient(white, rgba(255,255,255,0))
+			height 30px
+			width 100%
+			position absolute
+			left 0
+			top -1 * @height - 1
+			content ""
+
+	&__caption
+		box-reset()
+		font-size fontSizeCaption
+		font-weight bold
+		margin 20px 0
+
+	&__copyrights
+		box-reset()
+		margin 24px 0

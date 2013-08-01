@@ -1,0 +1,10 @@
+mixin button(p)
+	p = p || {}
+	mix = p.mix || ''
+	if p.mod
+		mod = 'button_' + p.mod
+	else
+		mod = ''	
+
+	button.button(type= p.type || '', class= mix + ' ' + mod)
+		block
