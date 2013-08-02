@@ -73,9 +73,10 @@
                                     ],
                                     validation: {
                                         required: false,
-                                        max: "2014"
+                                        max: "2014-01-01",
+                                        min: "1942-01-01"
                                     },
-                                    type: 'number'
+                                    type: 'date'
                                 },
                                 {
                                     text: [
