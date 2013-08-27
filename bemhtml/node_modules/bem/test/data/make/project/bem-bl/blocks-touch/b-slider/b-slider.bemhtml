@@ -1,0 +1,29 @@
+block b-slider {
+    js: true
+
+    mix: {
+        var mix = [];
+
+        this.ctx.indicator && mix.push({ block: 'b-slider-indicator', js: true });
+        this.ctx.arrows && mix.push({ block: 'b-slider-arrows', js: true });
+
+        return mix;
+    }
+
+    content: {
+        var mods = {
+            layout: 'horiz'
+        };
+
+        this.ctx.mods && this.ctx.mods['vert-align'] === 'top' && (mods['vert-align'] = 'top');
+
+        return {
+            elem: 'inner',
+            content: {
+                block: 'b-menu',
+                mods: mods,
+                content: this.ctx.content
+            }
+        }
+    }
+}
